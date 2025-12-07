@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #555;
+    background-color: #555555;
 }
 
 /* Header/Navbar styles */
@@ -87,7 +87,7 @@ nav.info {
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: 15px;
 }
 
 .searchContainer button:hover {
@@ -96,6 +96,215 @@ nav.info {
 }
 
 /* Nav links */
+
+/* AUTH POPUP (SIGN IN + SIGN UP)*/
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+
+    /* Smooth fade + hide when closed */
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(0px);
+    transition: opacity 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+/* Show popup smoothly */
+.modalOverlay.showModal {
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(6px);
+}
+
+/* Popup Box Animation */
+.modalBox {
+    background: #1c1c1c;
+    padding: 25px 25px 20px;
+    width: 340px;
+    border-radius: 12px;
+    border: 2px solid #f5c518;
+    color: #fff;
+    position: relative;
+
+    /* Transition base */
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* Slide-up + fade-in when active */
+.modalOverlay.showModal .modalBox {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Close Button */
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.closeBtn:hover {
+    color: #f5c518;
+}
+
+/* Tabs */
+.authTabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-radius: 999px;
+    background: #111;
+    padding: 3px;
+}
+
+.tabBtn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #bbb;
+    padding: 8px 0;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.tabBtn.activeTab {
+    background: #f5c518;
+    color: #111;
+}
+
+/* Google Auth Button */
+.googleBtn {
+    width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    color: #111;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    margin-bottom: 12px;
+}
+
+.googleBtn:hover {
+    background: #e6e6e6;
+    transform: translateY(-2px);
+}
+
+.googleIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.googleBtn {
+    position: relative;
+    overflow: hidden;
+}
+
+.googleBtn::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.googleBtn:active::after {
+    animation: ripple 1.4s ease-out;
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(25);
+        opacity: 0;
+    }
+}
+
+
+/* Divider text */
+.divider {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.7;
+    margin: 8px 0;
+}
+
+/* Inputs */
+.authForm input {
+    width: 100%;
+    padding: 10px;
+    margin: 7px 0;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+}
+
+/* Action Buttons */
+.signInBtn,
+.signUpBtn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #f5c518;
+    color: #111;
+    transition: 0.25s;
+}
+
+.signInBtn:hover,
+.signUpBtn:hover {
+    background: #fff;
+}
+
+/* Switch form text */
+.switchText {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.switchText a {
+    color: #f5c518;
+    text-decoration: none;
+}
+
+.switchText a:hover {
+    text-decoration: underline;
+}
+
+/* Hide form */
+.hiddenForm {
+    display: none;
+}
+
 
 nav.info ul {
     list-style: none;
@@ -161,5 +370,125 @@ nav.info ul li a:hover {
     font-size: 15px;
     margin-top: 10px;
     font-style: italic;
+}
+
+/* --- General Footer Setup --- */
+.footer {
+    background-color: #1a1a1a; /* Dark cinematic background */
+    color: #b3b3b3; /* Soft white text for readability */
+    padding: 60px 0 20px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Container to manage width and alignment */
+.footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex; /* Makes columns sit side-by-side */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* --- Columns Setup --- */
+.footerLeft, .footerCenter, .footerRight {
+    flex: 1; /* Each column takes equal space */
+    min-width: 250px; /* Prevents columns from getting too squashed */
+}
+
+/* --- Left Column (Logo & Title) --- */
+.footerLogo {
+    width: 60px; /* consistent size */
+    height: 60px;
+    object-fit: cover; /* prevents stretching */
+    border-radius: 50%; /* Make it circular */
+    margin-bottom: 15px;
+    border: 2px solid #e50914; /* Netflix-style red border accent */
+}
+
+.footerTitle {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* --- Center Column (Links) --- */
+.footerCenter h4, .footerRight h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footerCenter ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+}
+
+.footerCenter ul li {
+    margin-bottom: 10px;
+}
+
+.footerCenter ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footerCenter ul li a:hover {
+    color: #FFD700;
+    padding-left: 5px;
+}
+
+/* Right Column (Socials & Creator) */
+.creatorName {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Styling text links as buttons since no icons are present yet */
+.social {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.social:hover {
+    opacity: 0.8;
+}
+
+/* Specific colors for platforms */
+.fb { background-color: #3b5998; }
+.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.li { background-color: #0077b5; }
+
+/* --- Copyright Section --- */
+.copyright {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+}
+
+.creatorHighlight {
+    color: #e50914;
+    font-weight: bold;
 }
 
