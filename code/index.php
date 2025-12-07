@@ -1,5 +1,5 @@
 <?php
-    // Placeholder count for now 18 movies
+    // Placeholder count for now 12 movies
     $movieCount = 12;
 ?>
 
