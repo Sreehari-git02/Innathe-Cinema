@@ -34,6 +34,7 @@ header {
     height: auto;
     margin-right: 10px;
     border-radius: 50%;
+    border: 2px solid #FFD700;
 }
 
 .logoName .name {
@@ -406,7 +407,7 @@ nav.info ul li a:hover {
     object-fit: cover; /* prevents stretching */
     border-radius: 50%; /* Make it circular */
     margin-bottom: 15px;
-    border: 2px solid #e50914; /* Netflix-style red border accent */
+    border: 2px solid #FFD700;
 }
 
 .footerTitle {
