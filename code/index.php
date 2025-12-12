@@ -71,7 +71,7 @@
             <button type="submit" class="signInBtn">Sign In</button>
 
             <p class="switchText">
-                Don’t have an account?
+                Don't have an account?
                 <a href="#" id="switchToSignUp">Register now</a>
             </p>
         </form>
@@ -139,7 +139,6 @@
             <h4>Quick Links</h4>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="signin.php">Sign In</a></li>
             </ul>
         </div>
 

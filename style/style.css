@@ -493,3 +493,142 @@ nav.info ul li a:hover {
     font-weight: bold;
 }
 
+
+/* === Responsive Design (Media Queries) */
+
+/* Tablet & Smaller Screens (Max Width: 950px) */
+@media (max-width: 950px) {
+
+    /* --- Navigation Bar Adjustments --- */
+    header {
+        /* Allow header to wrap items vertically if needed */
+        flex-direction: column; 
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    /* Move Search Container below the logo on a new line */
+    .logoName {
+        width: 100%; /* Take full width */
+        margin-bottom: 10px; /* Space above search/nav */
+    }
+
+    nav.info {
+        width: 100%; /* Full width for the search and links container */
+        flex-direction: column; /* Stack search and nav links vertically */
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    /* Search bar width adjustment */
+    .searchContainer {
+        width: 100%;
+        margin-right: 0;
+        display: flex;
+    }
+
+    .searchContainer input {
+        width: 100% !important; /* Force input to take up max space */
+        flex-grow: 1; /* Allow it to take up available space */
+    }
+
+    /* Remove the 'hover to expand' effect which is less useful on touch devices, 
+       but keep the transition for good measure. */
+    .searchContainer:focus-within input {
+        width: 100% !important; /* Overwrite the 300px desktop rule */
+        box-shadow: 0 0 5px rgb(255, 215, 0);
+    }
+    
+    /* Nav links layout */
+    nav.info ul {
+        width: 100%;
+        gap: 20px;
+        /* Distribute links evenly across the width */
+        justify-content: space-around; 
+        flex-wrap: wrap; /* Allow links to wrap if needed */
+        padding-bottom: 5px;
+        border-bottom: 1px solid #333; /* Visual separation from content */
+    }
+
+    nav.info ul li a {
+        font-size: 14px;
+    }
+    
+    /* --- Movie Grid Adjustments --- */
+    /* Ensure the cards are not too small but still fit more than one */
+    .movieGrid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+    
+    .posterPlaceholder {
+        height: 200px; /* Slightly reduce height on smaller screens */
+    }
+    
+    /* --- Footer Adjustments --- */
+    .footerContent {
+        flex-direction: column; /* Stack all footer columns vertically */
+        align-items: center;
+        text-align: center;
+        gap: 30px; /* Space between the stacked columns */
+    }
+    
+    /* Center text in all columns */
+    .footerLeft, .footerCenter, .footerRight {
+        min-width: 100%; /* Take full width on stack */
+        border-bottom: 1px solid #333; /* Separator between sections */
+        padding-bottom: 20px;
+    }
+
+    /* Remove the border from the last column */
+    .footerRight {
+        border-bottom: none; 
+        padding-bottom: 0;
+    }
+
+    .socialIcons {
+        justify-content: center; /* Center social icons */
+    }
+}
+
+
+/* Mobile Screens (Max Width: 550px) */
+@media (max-width: 550px) {
+
+    /* --- General Spacing --- */
+    .movieSection {
+        padding: 15px;
+    }
+
+    /* --- Header / Nav Links --- */
+    nav.info ul {
+        /* Stack nav links one on top of the other for very small screens */
+        flex-direction: column; 
+        align-items: center;
+        gap: 10px;
+    }
+    
+    /* --- Movie Grid: Single Column --- */
+    .movieGrid {
+        /* Change to a single column layout on the smallest screens 
+           or keep the minmax to fit two small cards */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .movieName {
+        font-size: 14px;
+    }
+
+    /* --- Auth Modal (Sign-in/Register) --- */
+    .modalBox {
+        width: 90%; /* Use most of the screen width */
+        margin: 10px;
+    }
+    
+    /* --- Footer --- */
+    .copyright {
+        padding: 15px;
+        font-size: 12px;
+    }
+}
